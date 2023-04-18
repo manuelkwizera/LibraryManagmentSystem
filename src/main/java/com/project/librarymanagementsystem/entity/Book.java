@@ -39,6 +39,10 @@ public class Book {
             inverseJoinColumns = {@JoinColumn(name = "publisher_id")})
     private Set<Publisher> publishers = new HashSet<Publisher>();
 
+    public Book() {
+
+    }
+
     public Long getId() {
         return id;
     }

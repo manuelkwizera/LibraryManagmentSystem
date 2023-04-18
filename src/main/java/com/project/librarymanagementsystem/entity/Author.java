@@ -19,6 +19,10 @@ public class Author {
     @ManyToMany(mappedBy = "authors", cascade = CascadeType.ALL)
     private Set<Book> books = new HashSet<Book>();
 
+    public Author() {
+
+    }
+
     public Long getId() {
         return id;
     }
