@@ -118,21 +118,19 @@
                         <p class="text-primary m-0 fw-bold">Add Book</p>
                     </div>
                     <div class="card-body">
-                        <form action="#" th:action="@{save-book}" th:object="${book}" method="post">
+                        <form action="#" th:action="@{/save-book}" th:object="${book}" method="post">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label" for="input3"><strong>ISBN</strong></label>
-                                        <input type="text" class="form-control" id="input3" name="input3">
+                                        <input type="text" th:field="*{isbn}" class="form-control" id="isbn">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label" for="select3"><strong>Author</strong></label>
-                                        <select class="form-select" id="select3" name="select3">
-                                            <option value="option1">Option 1</option>
-                                            <option value="option2">Option 2</option>
-                                            <option value="option3">Option 3</option>
+                                        <select class="form-select" th:field="*{authors}" id="author">
+                                            <option th:each="author: ${authors}" th:value="${author.id}" th:text="${author.name}"></option>
                                         </select>
                                     </div>
                                 </div>
@@ -142,13 +140,13 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="input1"><strong>Book Name</strong></label>
-                                    <input type="text" class="form-control" id="input1" name="input1">
+                                    <input type="text" th:field="*{name}" class="form-control" id="name">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="input2"><strong>Book Description</strong></label>
-                                    <input type="text" class="form-control" id="input2" name="input2">
+                                    <input type="text" th:field="*{description}" class="form-control" id="description">
                                 </div>
                             </div>
                         </div>
@@ -157,17 +155,16 @@
                                     <div class="mb-3">
                                         <label class="form-label" for="select1"><strong>Category</strong></label>
                                         <select th:field="*{categories}" class="form-select" id="categories">
-                                            <option th:each="category: ${categories}" value="${category.id}" th:text="${category.name}"></option>
+                                            <option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
                                         </select>
+
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label" for="select2"><strong>Publisher</strong></label>
-                                        <select class="form-select" id="select2" name="select2">
-                                            <option value="option1">Option 1</option>
-                                            <option value="option2">Option 2</option>
-                                            <option value="option3">Option 3</option>
+                                        <select th:field="*{publishers}" class="form-select" id="publisher">
+                                            <option th:each="publisher : ${publishers}" th:value="${publisher.id}" th:text="${publisher.name}"></option>
                                         </select>
                                     </div>
                                 </div>
