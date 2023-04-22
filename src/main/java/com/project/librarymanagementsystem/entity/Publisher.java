@@ -14,7 +14,7 @@ public class Publisher {
     @Column(name = "name", nullable = false, unique = true)
     private String name;
 
-    @ManyToMany(mappedBy = "publishers", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "publishers",cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
     private Set<Book> books = new HashSet<Book>();
 
     public Publisher() {

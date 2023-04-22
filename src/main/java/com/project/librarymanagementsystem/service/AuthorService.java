@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AuthorService {
+public class
+AuthorService {
     @Autowired
     private AuthorRepository authorRepository;
 

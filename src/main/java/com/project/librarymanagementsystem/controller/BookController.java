@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -28,14 +29,10 @@ public class BookController {
     private AuthorService authorService;
 
     @GetMapping("/books")
-    public String index(){
-        return "books/index";
-    }
-
     public String findAllBooks(Model model){
         List<Book> books = bookService.findAllBooks();
         model.addAttribute("books", books);
-        return "book/index";
+        return "books/index";
     }
 
     @GetMapping("/add-book")
@@ -54,5 +51,12 @@ public class BookController {
         bookService.createBook(book);
         model.addAttribute("books", bookService.findAllBooks());
         return "redirect:/books";
+    }
+
+    @GetMapping("/remove-book/{id}")
+    public String deleteBook(@PathVariable Long id, Model model){
+        bookService.deleteBook(id);
+        model.addAttribute("books", bookService.findAllBooks());
+        return "books/index";
     }
 }
