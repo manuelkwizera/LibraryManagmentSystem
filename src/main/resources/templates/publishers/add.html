@@ -21,43 +21,22 @@
                 </div>
             </nav>
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h3 class="text-dark mb-4"><B>Books</B></h3>
-                    </div>
-                    <div class="col-md-6 text-md-right">
-                        <a href="/add-book" type="button" class="btn btn-primary" style="float: right">Add Book</a>
-                    </div>
-                </div>
-
-                <div class="card shadow">
+                <div class="card shadow mb-5">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 fw-bold">Books Info</p>
+                        <p class="text-primary m-0 fw-bold">Add Publishers</p>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                            <table class="table my-0" id="booksTable">
-                                <thead>
-                                <tr>
-                                    <th style="width: 20%">ISBN</th>
-                                    <th style="width: 30%">Name</th>
-                                    <th style="width: 30%">Description</th>
-                                    <th style="width: 20%">Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr th:each="books : ${books}">
-                                    <td th:text="${books.isbn}"></td>
-                                    <td th:text="${books.name}"></td>
-                                    <td th:text="${books.description}"></td>
-                                    <td>
-                                        <a th:href="@{/edit-book/{id}(id=${books.id})}" type="button" class="btn btn-primary">Edit</a>
-                                        <a th:href="@{/remove-book/{id}(id=${books.id})}" type="button" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <form action="#" th:action="@{/create-publisher}" th:object="${publisher}" method="post">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="name"><strong>publisher Name</strong></label>
+                                        <input type="text" th:field="*{name}" class="form-control" id="name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save</button></div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -76,9 +55,8 @@
 <script th:src="@{/js/bs-init.js}"></script>
 <script th:src="@{/js/theme.js}"></script>
 <script>
-    $(document).ready(function() {
-        $('#books-menu').addClass('active');
-        $('#booksTable').DataTable();
+    $(document).ready(function(){
+        $('#publishers-menu').addClass('active');
     });
 </script>
 </body>

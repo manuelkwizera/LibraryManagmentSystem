@@ -27,6 +27,10 @@ public class CategoryService {
         categoryRepository.save(category);
     }
 
+    public void updateCategory(Category category){
+        categoryRepository.save(category);
+    }
+
     public void deleteCategory(Long id){
         Category category = categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Category not Found"));
         categoryRepository.deleteById(category.getId());

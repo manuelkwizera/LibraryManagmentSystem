@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Library - Management</title>
+  <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" th:href="@{/fonts/fontawesome-all.min.css}">
+  <link rel="stylesheet" th:href="@{/fonts/font-awesome.min.css}">
+  <link rel="stylesheet" th:href="@{/fonts/fontawesome5-overrides.min.css}">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+</head>
+<body id="page-top">
+<div id="wrapper">
+  <span th:replace="fragments/header :: header"></span>
+  <div class="d-flex flex-column" id="content-wrapper">
+    <div id="content">
+      <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+        <div class="container-fluid">
+        </div>
+      </nav>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <h3 class="text-dark mb-4">Authors</h3>
+          </div>
+          <div class="col-md-6 text-md-right">
+            <a href="/add-author" type="button" class="btn btn-primary" style="float: right">Add Author</a>
+          </div>
+        </div>
+
+        <div class="card shadow">
+          <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">Authors Info</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+              <table class="table my-0" id="authorsTable">
+                <thead>
+                <tr>
+                  <th style="width: 20%">ID</th>
+                  <th style="width: 60%">Name</th>
+                  <th style="width: 20%">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="authors : ${authors}">
+                  <td th:text="${authors.id}"></td>
+                  <td th:text="${authors.name}"></td>
+                  <td>
+                    <a th:href="@{/edit-author/{id}(id=${authors.id})}" type="button" class="btn btn-primary">Edit</a>
+                    <a th:href="@{/remove-author/{id}(id=${authors.id})}" type="button" class="btn btn-danger">Delete</a>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="bg-white sticky-footer">
+      <div class="container my-auto">
+        <div class="text-center my-auto copyright"><span>Copyright © Brand 2023</span></div>
+      </div>
+    </footer>
+  </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/chart.min.js}"></script>
+<script th:src="@{/js/bs-init.js}"></script>
+<script th:src="@{/js/theme.js}"></script>
+<script>
+  $(document).ready(function() {
+    $('#authors-menu').addClass('active');
+    $('#authorsTable').DataTable();
+  });
+</script>
+</body>
+</html>

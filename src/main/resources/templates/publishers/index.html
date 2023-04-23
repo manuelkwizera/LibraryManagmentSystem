@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org/">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -23,36 +24,34 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
-                        <h3 class="text-dark mb-4"><B>Books</B></h3>
+                        <h3 class="text-dark mb-4">Publisher</h3>
                     </div>
                     <div class="col-md-6 text-md-right">
-                        <a href="/add-book" type="button" class="btn btn-primary" style="float: right">Add Book</a>
+                        <a href="/add-publisher" type="button" class="btn btn-primary" style="float: right">Add Publisher</a>
                     </div>
                 </div>
 
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 fw-bold">Books Info</p>
+                        <p class="text-primary m-0 fw-bold">Publisher Info</p>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                            <table class="table my-0" id="booksTable">
+                            <table class="table my-0" id="publishers-table">
                                 <thead>
                                 <tr>
-                                    <th style="width: 20%">ISBN</th>
-                                    <th style="width: 30%">Name</th>
-                                    <th style="width: 30%">Description</th>
+                                    <th style="width: 20%">ID</th>
+                                    <th style="width: 60%">Name</th>
                                     <th style="width: 20%">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="books : ${books}">
-                                    <td th:text="${books.isbn}"></td>
-                                    <td th:text="${books.name}"></td>
-                                    <td th:text="${books.description}"></td>
+                                <tr th:each="publishers : ${publishers}">
+                                    <td th:text="${publishers.id}"></td>
+                                    <td th:text="${publishers.name}"></td>
                                     <td>
-                                        <a th:href="@{/edit-book/{id}(id=${books.id})}" type="button" class="btn btn-primary">Edit</a>
-                                        <a th:href="@{/remove-book/{id}(id=${books.id})}" type="button" class="btn btn-danger">Delete</a>
+                                        <a th:href="@{/edit-publisher/{id}(id=${publishers.id})}" type="button" class="btn btn-primary">Edit</a>
+                                        <a th:href="@{/remove-publisher/{id}(id=${publishers.id})}" type="button" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -77,8 +76,8 @@
 <script th:src="@{/js/theme.js}"></script>
 <script>
     $(document).ready(function() {
-        $('#books-menu').addClass('active');
-        $('#booksTable').DataTable();
+        $('#publishers-menu').addClass('active');
+        $('#publishers-table').DataTable();
     });
 </script>
 </body>

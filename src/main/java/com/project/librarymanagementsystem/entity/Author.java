@@ -16,7 +16,7 @@ public class Author {
     private String name;
     @Column(name = "description", nullable = false)
     private String description;
-    @ManyToMany(mappedBy = "authors", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
+    @ManyToMany(mappedBy = "authors", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REMOVE})
     private Set<Book> books = new HashSet<Book>();
 
     public Author() {

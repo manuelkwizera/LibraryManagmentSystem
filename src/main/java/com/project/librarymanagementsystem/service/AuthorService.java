@@ -29,6 +29,11 @@ AuthorService {
         authorRepository.save(author);
     }
 
+    //update an author
+    public void updateAuthor(Author author){
+        authorRepository.save(author);
+    }
+
     //delete an author
     public void deleteAuthor(Long id){
         Author author = authorRepository.findById(id).orElseThrow(() -> new RuntimeException("Author not Found"));

@@ -112,13 +112,13 @@
                 </div>
             </nav>
             <div class="container-fluid">
-                <h3 class="text-dark mb-4">Add Book</h3>
+                <h3 class="text-dark mb-4">Edit Book</h3>
                 <div class="card shadow mb-5">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 fw-bold">Add Book</p>
                     </div>
                     <div class="card-body">
-                        <form action="#" th:action="@{/save-book}" th:object="${book}" method="post">
+                        <form action="#" th:action="@{/update-book/{id}(id=${book.id})}" th:object="${book}" method="post">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
@@ -137,19 +137,19 @@
                             </div>
 
                             <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label" for="input1"><strong>Book Name</strong></label>
-                                    <input type="text" th:field="*{name}" class="form-control" id="name">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="input1"><strong>Book Name</strong></label>
+                                        <input type="text" th:field="*{name}" class="form-control" id="name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="input2"><strong>Book Description</strong></label>
+                                        <input type="text" th:field="*{description}" class="form-control" id="description">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label" for="input2"><strong>Book Description</strong></label>
-                                    <input type="text" th:field="*{description}" class="form-control" id="description">
-                                </div>
-                            </div>
-                        </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
@@ -169,7 +169,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save </button></div>
+                            <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Update </button></div>
                         </form>
                     </div>
                 </div>

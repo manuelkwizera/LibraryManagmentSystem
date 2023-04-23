@@ -32,4 +32,7 @@ public class PublisherService {
         publisherRepository.deleteById(publisher.getId());
     }
 
+    public void updatePublisher(Publisher publisher) {
+        publisherRepository.save(publisher);
+    }
 }

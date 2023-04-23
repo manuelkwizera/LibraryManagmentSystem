@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 
@@ -58,5 +59,23 @@ public class BookController {
         bookService.deleteBook(id);
         model.addAttribute("books", bookService.findAllBooks());
         return "books/index";
+    }
+    @GetMapping("/edit-book/{id}")
+    public String editBook(@PathVariable Long id, Model model){
+        //Book book = bookService.findBookById(id);
+        model.addAttribute("book", bookService.findBookById(id));
+        model.addAttribute("categories", categoryService.findAllCategories());
+        model.addAttribute("publishers", publisherService.findAllPublishers());
+        model.addAttribute("authors", authorService.findAllAuthors());
+        return "books/edit";
+    }
+    @PostMapping("/update-book/{id}")
+    public String updateBook(@PathVariable Long id, Book book, BindingResult result, Model model){
+        if(result.hasErrors()){
+            return "edit-book";
+        }
+        bookService.updateBook(book);
+        model.addAttribute("books", bookService.findAllBooks());
+        return "redirect:/books";
     }
 }
